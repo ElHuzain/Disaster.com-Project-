@@ -6,7 +6,7 @@
     <link href="css/index.css" rel="stylesheet">
   </head>
   <body class="body-reg">
-    <form>
+    <form action="verification/verifyRegister.php" method="post">
       
       <div style="padding:5%;"class="container">
       <section class="modifiedHomePage reg">
@@ -27,7 +27,7 @@
       <input id="Female" type="radio" name="gender" />
       <br>
       <label for="Address"><b>Address</b></label>
-      <input id="Address" type="text"  placeholder="Enter Address" name="Address" class="form-control"/>
+      <input id="Address" type="text"  placeholder="Enter Address" name="address" class="form-control"/>
       <br>
      <div class="part"> <button type="Submit" class="btn"> Create an account </button> <br>
       <br>

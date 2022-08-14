@@ -16,11 +16,11 @@
                 break;
             }
             case 'post': {
-                $query = "INSERT INTO post (uid, title, body, date) VALUES('".$values['uid']."', '".$values['title']."', '".$values['body']."', '".date()."')";
+                $query = "INSERT INTO post (uid, title, body, date) VALUES('".$values['uid']."', '".$values['title']."', '".$values['body']."', '".date("Y-m-d")."')";
                 break;
             }
             case 'comment': {
-                $query = "INSERT INTO comment (uid, pid, body, date) VALUES('".$values['uid']."', '".$values['pid']."', '".$values['body']."', '".date()."')";
+                $query = "INSERT INTO comment (uid, pid, content, date) VALUES('".$values['uid']."', '".$values['pid']."', '".$values['content']."', '".date("Y-m-d")."')";
                 break;
             }
         }
@@ -39,9 +39,8 @@
     // Retrieve some data
     function retrieve($table, $q, $con){
         $query = "SELECT * FROM";
-
         $query = "$query $q";
-
+        
         $result = mysqli_query($con, $query);
         return $result;
     }
