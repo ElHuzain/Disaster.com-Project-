@@ -1,0 +1,42 @@
+CREATE DATABASE disaster;
+USE disaster;
+
+-- User
+CREATE TABLE `user` (
+  uid int(5) NOT NULL AUTO_INCREMENT,
+  name varchar(556) NOT NULL,
+  password varchar(255) NOT NULL,
+  gender varchar(50) NOT NULL,
+  address varchar(60) NOT NULL,
+  PRIMARY KEY (uid)
+);
+
+-- Post
+CREATE TABLE post (
+  pid int(5) NOT NULL AUTO_INCREMENT,
+  uid int(5) NOT NULL,
+  title varchar(50) NOT NULL,
+  body text NOT NULL,
+  date date NOT NULL,
+  PRIMARY KEY (pid),
+  FOREIGN KEY (uid) REFERENCES user(uid)
+);
+
+-- Comment
+CREATE TABLE comment (
+  cid int(5) NOT NULL AUTO_INCREMENT,
+  uid int(5) NOT NULL,
+  pid int(5) NOT NULL,
+  content text NOT NULL,
+  date date NOT NULL,
+  PRIMARY KEY (cid),
+  FOREIGN KEY (uid) REFERENCES user(uid),
+  FOREIGN KEY (pid) REFERENCES post(pid)
+);
+
+-- View
+CREATE VIEW homepage AS
+SELECT p.pid, u.uid, u.name, p.title, p.body, (SELECT count(*) FROM comment as c WHERE c.pid = p.pid) as replies
+FROM user as u, post as p
+WHERE u.uid = p.pid
+
