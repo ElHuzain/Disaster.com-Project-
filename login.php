@@ -2,9 +2,9 @@
 <html>
 
 <head>
-    <title> Register </title>
+    <title> Sign in </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/test.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body class="body-reg">
@@ -23,6 +23,7 @@
                     <br>
 
                     <br>
+                    <?php if(isset($_GET['error'])) echo "<div class=\"error\"><p>".$_GET['error']."</p></div>"; ?>
                     <div class="part"> <button type="Submit" class="btn"> Sign in </button> <br>
                         <br>
                         <P> New to Disaster.com? <a href="register.php"> Sign Up </a> </P>

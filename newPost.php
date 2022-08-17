@@ -8,7 +8,7 @@ session_start();
 <head>
     <title> New Post </title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link href="css/test.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
 </head>
 
 <body class="body-reg">
@@ -20,6 +20,7 @@ session_start();
                 <div class="">
                     <h1 style="text-align: center; color: #000;">Post a new disaster!</h1>
                     <hr>
+                    <?php if (isset($_GET['error'])) echo "<div class=\"error\"><p>" . $_GET['error'] . "</p></div>"; ?>
                     <label for="name"><b>Title</b></label>
                     <input id="name" type="text" name="title" placeholder="Enter Title" required class="form-control" />
                     <br>
@@ -36,6 +37,8 @@ session_start();
         </div>
     </form>
     <?php include("files/footer.php"); ?>
+    <script src="./js/main.js"></script>
 </body>
+
 
 </html>
