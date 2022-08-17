@@ -19,21 +19,19 @@ function store($table, $values, $con)
     $query = "";
     switch ($table) {
         case 'user': {
-                $query = "INSERT INTO user (name, gender, address, password) VALUES('" . $values['name'] . "', '" . $values['gender'] . "', '" . $values['address'] . "', '" . $values['password'] . "')";
+                $query = "INSERT INTO user (name, gender, address, password) VALUES(\"" . $values['name'] . "\", \"" . $values['gender'] . "\", \"" . $values['address'] . "\", \"" . $values['password'] . "\")";
                 break;
             }
         case 'post': {
-                $query = "INSERT INTO post (uid, title, body, date) VALUES('" . $values['uid'] . "', '" . $values['title'] . "', '" . $values['body'] . "', '" . date("Y-m-d") . "')";
+                $query = "INSERT INTO post (uid, title, body, date) VALUES(\"" . $values['uid'] . "\", \"" . $values['title'] . "\", \"" . $values['body'] . "\", '" . date("Y-m-d") . "')";
                 break;
             }
         case 'comment': {
-                $query = "INSERT INTO comment (uid, pid, content, date) VALUES('" . $values['uid'] . "', '" . $values['pid'] . "', '" . $values['content'] . "', '" . date("Y-m-d") . "')";
+                $query = "INSERT INTO comment (uid, pid, content, date) VALUES(\"" . $values['uid'] . "\", \"" . $values['pid'] . "\", \"" . $values['content'] . "\", \"" . date("Y-m-d") . "\")";
                 break;
             }
     }
-    $result = mysqli_query($con, $query);
-    if (mysqli_error($con)) return false;
-    else return true;
+    return mysqli_query($con, $query);
 }
 
 // Retrieve all data
@@ -70,7 +68,7 @@ function delete($table, $key, $value, $con){
 
 // Update a record
 function update($table, $key, $value, $id, $con){
-    $query = "UPDATE $table SET $key = '$value' WHERE pid = $id";
+    $query = "UPDATE $table SET $key = \"$value\" WHERE pid = $id";
     echo $query;
     return mysqli_query($con, $query);
 }

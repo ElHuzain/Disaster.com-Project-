@@ -9,7 +9,7 @@ session_start();
 if($_POST['title'] == " " || $_POST['body'] == " ") return header("Location: ../newPost.php?error=Please fill in all the blanks.");
 
 // Storing data & redirecting user to home
-$result = store("post", ["uid"=>$_SESSION['userid'], "title"=>$_POST['title'], "body"=>$_POST['body']], $con);
+$result = store("post", ["uid"=>$_SESSION['userid'], "title"=>$_POST["title"], "body"=>$_POST["body"]], $con);
 header("Location: ../home.php");
 
 ?>

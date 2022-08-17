@@ -36,7 +36,7 @@ CREATE TABLE comment (
 
 -- View
 CREATE VIEW homepage AS
-SELECT p.pid, u.uid, u.name, p.title, p.body, (SELECT count(*) FROM comment as c WHERE c.pid = p.pid) as replies
+SELECT p.pid, u.uid, u.name, p.title, p.body, (SELECT count(*) FROM comment as c WHERE c.pid = p.pid) as replies, p.date
 FROM user as u, post as p
-WHERE u.uid = p.pid
+WHERE u.uid = p.uid
 
